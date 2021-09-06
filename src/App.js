@@ -8,7 +8,7 @@ function App() {
   const [tasks, setTasks] = useState([])
 
   const handlePost = e => {
-    
+
     setTasks("");
   }
 
@@ -16,11 +16,11 @@ function App() {
     setTasks(event.target.value)
   }
 
-  // const todos = tasks.map((todo, index) => {
-  //   return (
-  //     <li key={index}>{todo}</li>
-  //   )
-  // })
+  const todos = tasks.map((todo, index) => {
+    return (
+      <li key={index}>{todo}</li>
+    )
+  })
 
 
   return (
@@ -31,6 +31,7 @@ function App() {
             <input type="text" onChange={handleChange} value={tasks} placeholder="What needs to be done?" />
             <button type="button" className="btn" onClick={handlePost}><i class="fas fa-plus-circle"></i></button>
            <li>sda</li>
+           <li>{todos}</li>
           </ul>
           <div className="footer">
             <small>x items left</small>

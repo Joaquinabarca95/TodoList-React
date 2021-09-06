@@ -13,7 +13,7 @@ body {
 }
 
 .title{
-  color: #EBD8D9;
+  color: #c0cdee;
   padding: 20px;
 }
 .todos {
@@ -43,7 +43,7 @@ body {
 }
 
 .listItemClass button {
-  color: #EBD8D9;
+  color: #c0cdee;
 }
 
 .listItemClass button:hover{
