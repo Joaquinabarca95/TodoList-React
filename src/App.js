@@ -8,6 +8,7 @@ function App() {
   const [tasks, setTasks] = useState([])
 
   const handlePost = e => {
+    
     setTasks("");
   }
 
