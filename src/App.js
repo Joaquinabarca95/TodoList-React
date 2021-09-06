@@ -1,24 +1,41 @@
-import logo from './logo.svg';
+
+import React, { useState } from 'react';
 import './App.css';
 
 function App() {
+
+
+  const [tasks, setTasks] = useState([])
+
+  const handlePost = e => {
+    setTasks("");
+  }
+
+  const handleChange = (event) =>{
+    setTasks(event.target.value)
+  }
+
+  // const todos = tasks.map((todo, index) => {
+  //   return (
+  //     <li key={index}>{todo}</li>
+  //   )
+  // })
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    
+      <div className="container">
+        <h1 className="title">todos</h1>  
+          <ul className="listItemClass">
+            <input type="text" onChange={handleChange} value={tasks} placeholder="What needs to be done?" />
+            <button type="button" className="btn" onClick={handlePost}><i class="fas fa-plus-circle"></i></button>
+           <li>sda</li>
+          </ul>
+          <div className="footer">
+            <small>x items left</small>
+          </div>   
+      </div>
+    
   );
 }
 
