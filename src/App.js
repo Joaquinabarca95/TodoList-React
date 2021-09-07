@@ -5,36 +5,56 @@ import './App.css';
 function App() {
 
 
-  const [tasks, setTasks] = useState([])
+  const [todo, setTodo] = useState([])
 
-  const handlePost = e => {
-
-    setTasks("");
-  }
-
-  const handleChange = (event) =>{
-    setTasks(event.target.value)
-  }
-
-  const todos = tasks.map((todo, index) => {
+  const todoList = todo.map((todo, index) =>{
     return (
-      <li key={index}>{todo}</li>
+      <li key={index}>
+        {todo} 
+        <button  onClick={() => removeTodo(index)}>
+          <i className="fas fa-trash-alt"></i>
+        </button>
+      </li>
     )
   })
 
+
+  const handlePost = e => {
+    if (e.keyCode === 13 && e.target.value !== ""){
+      let task = todo.concat(e.target.value)
+      setTodo(task)
+      e.target.value = "";
+    }
+  }
+
+  const removeTodo = (i) => {
+    let newTodo = [...todo]
+    newTodo.splice(i, 1)
+    setTodo(newTodo)
+  }
+
+  const itemsLeft = () => {
+    if (todo.length === 0){
+      return "No task left to do, add a task!"
+    } else if (todo.length === 1){
+      return "1 task left to do"
+    } else if (todo.length > 1){
+      return `${todo.length} tasks to do`
+    }
+  }
+
+ 
 
   return (
     
       <div className="container">
         <h1 className="title">todos</h1>  
           <ul className="listItemClass">
-            <input type="text" onChange={handleChange} value={tasks} placeholder="What needs to be done?" />
-            <button type="button" className="btn" onClick={handlePost}><i class="fas fa-plus-circle"></i></button>
-           <li>sda</li>
-           <li>{todos}</li>
+            <input type="text" onKeyUp={handlePost} placeholder="What needs to be done?"  />
+           {todoList}
           </ul>
           <div className="footer">
-            <small>x items left</small>
+            <small>{itemsLeft()}</small>
           </div>   
       </div>
     
